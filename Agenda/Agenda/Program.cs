@@ -1,4 +1,4 @@
-﻿using System.Net;
+﻿
 using System.Text.RegularExpressions;
 
 namespace Agenda
@@ -80,14 +80,11 @@ namespace Agenda
             Console.WriteLine("Fica el telèfon:");
             string telefon = Console.ReadLine();
 
-
             Console.WriteLine("Fica la data de naixement:");
             DateTime dataNaixement;
 
             Console.WriteLine("Fica el correu electrònic:");
             string correu = Console.ReadLine();
-
-
 
         }
         static string ValidarNomCognom(string nomCognon)
@@ -178,18 +175,65 @@ namespace Agenda
             if (!trobat)
             {
                 Console.WriteLine("Usuari no trobat");
-                Main();
+                Menu();
             }
         }
 
         static void ModificarUsuari()
         {
+            StreamReader agendaLlegir = new StreamReader("agenda.txt");
+            string nomFrase;
+            Console.WriteLine("Fica el nom del usuari que vols modificar:");
+            string nom = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Que vols modificar??");
+            Console.WriteLine("1. Nom");
+            Console.WriteLine("2. Primer Cognom");
+            Console.WriteLine("3. Segon Cognom");
+            Console.WriteLine("4. Dni");
+            Console.WriteLine("5. Data Naixement");
+            int posicio = Console.ReadLine();
+
+            do
+            {
+                nomFrase = agendaLlegir.ReadLine();
+            } while (!nomFrase.Equals(nom));
             
+
+            switch:
+                case 1:
+                    nom = nomFrase.Substring(0, nomFrase.IndexOf(";"));
+                break;
+                case 2:
+                    string frase = frase.Substring(frase.IndexOf(";") + 1);
+                    string cognom1 = frase.Substring(0, frase.IndexOf(";"));
+                break;
+                case 3:
+                    frase = frase.Substring(frase.IndexOf(";") + 2);
+                    string cognom2 = frase.Substring(0, frase.IndexOf(";"));
+                break;
+                case 4:
+                    frase = frase.Substring(frase.IndexOf(";") + 3);
+                    string dni = frase.Substring(0, frase.IndexOf(";"));
+                break;
+                case 5:
+                    frase = frase.Substring(frase.IndexOf(";") + 4);
+                    string datanaix = frase.Substring(0, frase.IndexOf(";"));
+                break;
         }
 
         static void EliminarUsuari()
         {
-            
+            StreamReader agendaLlegir = new StreamReader("agenda.txt");
+            Console.WriteLine("Fica el nom del usuari que vols modificar:");
+            string nom = Console.ReadLine();
+            string nomFrase = agendaLlegir.ReadLine();
+            nomFrase = nomFrase.Substring(0, nomFrase.IndexOf(";"));
+            if (nomFrase.Equals(nom)
+            {
+                 
+            }
         }
 
         static void MostrarAgenda()
